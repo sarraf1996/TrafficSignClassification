@@ -17,7 +17,8 @@ def image_processing(img):
     image_to_predict = image.resize((50, 50), Image.LANCZOS)
     data.append(np.array(image_to_predict))
     x_test = np.array(data)
-    y_pred = model.predict_classes(x_test)
+    y_pred_array = model.predict(x_test)
+    y_pred = np.argmax(y_pred_array, axis = 1)
 
     #For previewing the uploaded image in the browser
     image_to_preview = image.resize((246, 246), Image.LANCZOS)
